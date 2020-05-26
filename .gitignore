@@ -3,3 +3,63 @@
 target
 pom.xml~
 
+module1-result/bullet_point.png
+module1-result/collapseall.gif
+module1-result/emailable-report.html
+module1-result/failed.png
+module1-result/index.html
+module1-result/jquery-1.7.1.min.js
+module1-result/navigator-bullet.png
+module1-result/passed.png
+module1-result/skipped.png
+module1-result/testng-failed.xml
+module1-result/testng-reports.css
+module1-result/testng-reports.js
+module1-result/testng-results.xml
+module1-result/testng.css
+module1-result/Cucumber Framework/Cucumber Tests.html
+module1-result/Cucumber Framework/Cucumber Tests.xml
+module1-result/Cucumber Framework/testng-failed.xml
+module1-result/junitreports/TEST-runners.HomePageTest.xml
+module1-result/old/index.html
+module1-result/old/Cucumber Framework/classes.html
+module1-result/old/Cucumber Framework/Cucumber Tests.properties
+module1-result/old/Cucumber Framework/groups.html
+module1-result/old/Cucumber Framework/index.html
+module1-result/old/Cucumber Framework/main.html
+module1-result/old/Cucumber Framework/methods-alphabetical.html
+module1-result/old/Cucumber Framework/methods-not-run.html
+module1-result/old/Cucumber Framework/methods.html
+module1-result/old/Cucumber Framework/reporter-output.html
+module1-result/old/Cucumber Framework/testng.xml.html
+module1-result/old/Cucumber Framework/toc.html
+module2-result/bullet_point.png
+module2-result/collapseall.gif
+module2-result/emailable-report.html
+module2-result/failed.png
+module2-result/index.html
+module2-result/jquery-1.7.1.min.js
+module2-result/navigator-bullet.png
+module2-result/passed.png
+module2-result/skipped.png
+module2-result/testng-failed.xml
+module2-result/testng-reports.css
+module2-result/testng-reports.js
+module2-result/testng-results.xml
+module2-result/testng.css
+module2-result/Cucumber Framework/Cucumber Tests.html
+module2-result/Cucumber Framework/Cucumber Tests.xml
+module2-result/Cucumber Framework/testng-failed.xml
+module2-result/junitreports/TEST-runners.DuckDuckGoPageTest.xml
+module2-result/old/index.html
+module2-result/old/Cucumber Framework/classes.html
+module2-result/old/Cucumber Framework/Cucumber Tests.properties
+module2-result/old/Cucumber Framework/groups.html
+module2-result/old/Cucumber Framework/index.html
+module2-result/old/Cucumber Framework/main.html
+module2-result/old/Cucumber Framework/methods-alphabetical.html
+module2-result/old/Cucumber Framework/methods-not-run.html
+module2-result/old/Cucumber Framework/methods.html
+module2-result/old/Cucumber Framework/reporter-output.html
+module2-result/old/Cucumber Framework/testng.xml.html
+module2-result/old/Cucumber Framework/toc.html

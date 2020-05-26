@@ -11,11 +11,15 @@ I am building test fw to your tests inside a docker container in parallel in AWS
 
 Following are objectives
 
-To bring up the Selenium Grid infrastructure on-demand
-To run our selenium tests inside a docker container
-To run multiple test suites in parallel
-To run our tests in the cloud like AWS / Azure / Google-cloud
-To build a CI + CD pipeline to automatically build our selenium project, package it as a docker image & push it into DockerHub.
+-To bring up the Selenium Grid infrastructure on-demand
+
+-To run our selenium tests inside a docker container
+
+-To run multiple test suites in parallel
+
+-To run our tests in the cloud like AWS / Azure / Google-cloud
+
+-To build a CI + CD pipeline to automatically build our selenium project, package it as a docker image & push it into DockerHub.
 
 I am planning to use following stack to use 
 
@@ -56,6 +60,12 @@ docker run -it --entrypoint=/bin/sh cucumber/selenium-docker
 // create container on our image
 
 docker run -it --entrypoint=/bin/sh cucumber/selenium-docker
+
+
+//Run Jenkins 
+
+docker run -p 8080:8080 -p 50000:50000 -v "$PWD/jenkins:/var/jenkins_home" jenkins/jenkins:lts
+
 
 
 
