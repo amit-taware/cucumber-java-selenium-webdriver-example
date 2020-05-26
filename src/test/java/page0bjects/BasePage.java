@@ -1,7 +1,7 @@
-package com.automatedtest.sample.basepage;
+package page0bjects;
 
-import com.automatedtest.sample.infrastructure.driver.Setup;
-import com.automatedtest.sample.infrastructure.driver.Wait;
+import masterhooks.Setup;
+import masterhooks.Wait;
 import org.openqa.selenium.WebDriver;
 
 public class BasePage {

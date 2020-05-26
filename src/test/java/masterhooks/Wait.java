@@ -1,4 +1,4 @@
-package com.automatedtest.sample.infrastructure.driver;
+package masterhooks;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -37,6 +37,12 @@ public class Wait {
 
     public void forPresenceOfElements(int timeout, By elementLocator, String elementName){
         ExpectedCondition<List<WebElement>> condition = ExpectedConditions.presenceOfAllElementsLocatedBy(elementLocator);
+        String timeoutMessage = elementName + " elements were not displayed after " + Integer.toString(timeout) + " seconds.";
+        waitUntilCondition(condition, timeoutMessage, timeout);
+    }
+
+    public void forNumberOfElementsToBeMoreThan(int timeout, By elementLocator,String elementName, int timetowait){
+        ExpectedCondition<List<WebElement>> condition = ExpectedConditions.numberOfElementsToBeMoreThan(elementLocator,timetowait);
         String timeoutMessage = elementName + " elements were not displayed after " + Integer.toString(timeout) + " seconds.";
         waitUntilCondition(condition, timeoutMessage, timeout);
     }

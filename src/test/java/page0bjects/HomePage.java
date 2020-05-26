@@ -1,14 +1,13 @@
-package com.automatedtest.sample.homepage;
+package page0bjects;
 
-import com.automatedtest.sample.basepage.BasePage;
-import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 
-public class HomePage extends BasePage{
+public class HomePage extends BasePage {
 
     private static final String HOME_PAGE_URL = "https://www.google.";
 
@@ -18,31 +17,29 @@ public class HomePage extends BasePage{
     @FindBy(css = "input[name=q]")
     private WebElement searchInput;
 
-
-    HomePage() {
+    public HomePage() {
         PageFactory.initElements(driver, this);
     }
 
-    void goToHomePage(String country){
+    public void goToHomePage(String country) {
         driver.get(HOME_PAGE_URL + country);
         wait.forLoading(5);
     }
 
-    void checkLogoDisplay() {
+    public void checkLogoDisplay() {
         wait.forElementToBeDisplayed(5, this.logo, "Logo");
     }
 
-    void checkTitle(String title) {
+    public void checkTitle(String title) {
         String displayedTitle = driver.getTitle();
-        Assert.assertTrue("Displayed title is " + displayedTitle + " instead of " + title,
-                title.equals(displayedTitle));
+        Assert.assertEquals(displayedTitle, title, "Displayed title is " + displayedTitle + " instead of " + title);
     }
 
-    void checkSearchBarDisplay() {
+    public void checkSearchBarDisplay() {
         wait.forElementToBeDisplayed(10, this.searchInput, "Search Bar");
     }
 
-    void searchFor(String searchValue) {
+    public void searchFor(String searchValue) {
         this.searchInput.sendKeys(searchValue);
         this.searchInput.sendKeys(Keys.ENTER);
     }

@@ -1,41 +1,65 @@
-# Automated test example in Java with Cucumber and Selenium WebDriver #
+## Run tests on local
+mvn clean test
 
-This project is an example of UI automated functional test for Google home page and search using Selenium and Cucumber.
+## Run test in docker container
 
-Test scenarios are described in the feature files located here ./src/test/resources/com/automatedtest/sample.
+./run-test-in-container.sh
 
-For more info about this project, read the article ["UI automated test project example with Selenium, Cucumber and Java"](https://medium.com/@lucie.duchemin/ui-automated-test-project-example-with-selenium-cucumber-and-java-b33788bd11c4)
+## This project is in WIP
 
-## Installation ##
+I am building test fw to your tests inside a docker container in parallel in AWS & Create disposable infrastructure
 
-You need to have [Java 8 JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) installed along with [maven](https://maven.apache.org/download.cgi).
+Following are objectives
 
-To run the tests locally with Chrome, install ChromeDriver from [here](http://chromedriver.chromium.org), add its location to your system PATH and add webdriver.chrome.driver=path/to/the/driver to your local variables.
+To bring up the Selenium Grid infrastructure on-demand
+To run our selenium tests inside a docker container
+To run multiple test suites in parallel
+To run our tests in the cloud like AWS / Azure / Google-cloud
+To build a CI + CD pipeline to automatically build our selenium project, package it as a docker image & push it into DockerHub.
 
-To run the tests locally with Firefox, install GeckoDriver from [here](https://github.com/mozilla/geckodriver/releases) and add its location to your system PATH.
+I am planning to use following stack to use 
 
-To install all dependencies, run 
+-Java
+-Maven
+-Cucumber
+-TestNG
+-RestAssured for API Module
+-Appium for mobile module
+-Jenkins
 
-```console
-$ mvn clean install
-```
 
-## Running tests ##
+##Following are some important command 
 
-```console
-$ mvn test
-```
+docker-compose up -d --scale chrome=1 --scale firefox=2
 
-By default, tests will run on Chrome. To change that, specify `-Dbrowser={browser}` where `{browser}` is either `chrome` or `firefox`. If you haven't added the chrome driver path to your local variables, you can add it directly in the run command with the option `-Dwebdriver.chrome.driver=path/to/the/driver`.
+mvn clean package -DskipTests=ture
 
-You can also select specific scenarios to execute using `-Dcucumber.options="--tags @your_tag"`. More info about tags and how to combine them [here](https://github.com/cucumber/cucumber/tree/master/tag-expressions).
+docker-compose up -d 
 
-## Cucumber Studio (Hiptest) ##
+cd target
+java -cp selenium-docker.jar:selenium-docker-tests.jar:libs/* -Dcucumber.options="classpath:features" org.testng.TestNG ../testng.xml 
+java -cp selenium-docker.jar:selenium-docker-tests.jar:libs/* -Dcucumber.options="classpath:features" -DBROWSER=firefox  org.testng.TestNG ../testng.xml 
+java -cp selenium-docker.jar:selenium-docker-tests.jar:libs/* -Dcucumber.options="classpath:features/module2" -DBROWSER=firefox  org.testng.TestNG ../module2.xml 
 
-Feature files can be handled with Cucumber Studio (previously called Hiptest), a test management platform. To get started with Cucumber Studio, 
-go [here](https://cucumber.io/tools/cucumberstudio/getting-started-with-behavior-driven-development/). Features files in 
-this project were exported directly from an [Hiptest project](https://studio.cucumber.io/projects/102008) using 
-[Hiptest publisher](https://github.com/hiptest/hiptest-publisher). Credentials to access the project are the following.
 
-- _login:_ automated-tests@lumiererouge.net
-- _password:_ Eth7S9#
+To create own docker image and run tests
+
+docker build -t="cucumber/selenium-docker" .
+docker run -e HUB_HOST=192.168.1.2 -e CUCUMBER_OPTIONS="classpath:features/module2" -e BROWSER=firefox -e MODULE=module2.xml  cucumber/selenium-docker
+docker run -e CUCUMBER_OPTIONS="classpath:features/module2" -e BROWSER=firefox -e MODULE=module2.xml  cucumber/selenium-docker
+
+Run in our docker image
+docker run -it --entrypoint=/bin/sh cucumber/selenium-docker
+ java -cp selenium-docker.jar:selenium-docker-tests.jar:libs/* -DHUB_HOST=192.168.1.2 -Dcucumber.options="classpath:features/module2" -DBROWSER=firefox  org.testng.TestNG module2.xml 
+
+
+// create container on our image
+
+docker run -it --entrypoint=/bin/sh cucumber/selenium-docker
+
+
+
+
+
+
+

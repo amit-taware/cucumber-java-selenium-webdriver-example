@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Cucumber Framework" verbose="2" parallel="tests">
+    <test name="Cucumber Tests">
+        <classes>
+            <class name="runners.HomePageTest"/>
+        </classes>
+    </test>
+<!--    to run test in parallel add more tests below-->
+<!--    <test name="Cucumber Tests-1">-->
+<!--        <classes>-->
+<!--            <class name="runners.SearchTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="Cucumber Tests-2">-->
+<!--        <classes>-->
+<!--            <class name="runners.SearchTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+</suite>

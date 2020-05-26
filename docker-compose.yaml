@@ -1,0 +1,44 @@
+version: "3"
+services:
+  hub:
+    image: selenium/hub:3.14
+    ports:
+      - "4444:4444"
+  chrome:
+    image: selenium/node-chrome:3.14
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+  firefox:
+    image: selenium/node-firefox:3.14
+    shm_size: '512m'
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+  module1:
+    image: cucumber/selenium-docker
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=firefox
+      - HUB_HOST=hub
+      - MODULE=module1.xml
+      - CUCUMBER_OPTIONS=classpath:features/module1
+    volumes:
+      - ./module1-result:/usr/share/udemy/test-output
+  module2:
+    image: cucumber/selenium-docker
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=firefox
+      - HUB_HOST=hub
+      - MODULE=module2.xml
+      - CUCUMBER_OPTIONS=classpath:features/module2
+
+    volumes:
+      - ./module2-result:/usr/share/udemy/test-output
