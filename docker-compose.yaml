@@ -1,17 +1,21 @@
 version: "3"
 services:
   hub:
-    image: selenium/hub:3.14
+    image: selenium/hub:latest
     ports:
       - "4444:4444"
+    environment:
+      - GRID_TIMEOUT=30000
+      - GRID_BROWSER_TIMEOUT=30000
+
   chrome:
-    image: selenium/node-chrome:3.14
+    image: selenium/node-chrome:latest
     depends_on:
       - hub
     environment:
       - HUB_HOST=hub
   firefox:
-    image: selenium/node-firefox:3.14
+    image: selenium/node-firefox:latest
     shm_size: '512m'
     depends_on:
       - hub
@@ -23,12 +27,14 @@ services:
       - chrome
       - firefox
     environment:
-      - BROWSER=firefox
+      - BROWSER=chrome
       - HUB_HOST=hub
       - MODULE=module1.xml
       - CUCUMBER_OPTIONS=classpath:features/module1
     volumes:
-      - ./module1-result:/usr/share/udemy/test-output
+      - ./module1-result:/usr/share/selenium-docker/test-output
+      - ./module1-result/json:/usr/share/selenium-docker/target/cucumber_json_reports
+
   module2:
     image: cucumber/selenium-docker
     depends_on:
@@ -41,4 +47,5 @@ services:
       - CUCUMBER_OPTIONS=classpath:features/module2
 
     volumes:
-      - ./module2-result:/usr/share/udemy/test-output
+      - ./module2-result:/usr/share/selenium-docker/test-output
+      - ./module2-result/json:/usr/share/selenium-docker/target/cucumber_json_reports

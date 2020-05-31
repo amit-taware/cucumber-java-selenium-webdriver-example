@@ -1,6 +1,5 @@
 Feature: Search
 
-
   @search @search_01
   Scenario Outline: Search cucumber studio
     Given A user navigates to HomePage "fr"
@@ -9,4 +8,4 @@ Feature: Search
 
     Examples:
       | nbOfResultsToSearch |
-      | 3 |
+      | 3                   |

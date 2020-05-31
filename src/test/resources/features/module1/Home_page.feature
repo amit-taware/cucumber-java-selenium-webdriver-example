@@ -9,8 +9,8 @@ Feature: Home page
 
     Examples:
       | countryCode |
-      | fr |
-      | com |
+      | fr          |
+      | com         |
 
   @home_page @home_page_title
   Scenario: Check title

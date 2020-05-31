@@ -7,7 +7,7 @@ mvn clean test
 
 ## This project is in WIP
 
-I am building test fw to your tests inside a docker container in parallel in AWS & Create disposable infrastructure
+I am building test fw to run tests inside a docker container in parallel in AWS & Create disposable infrastructure
 
 Following are objectives
 
@@ -36,7 +36,7 @@ I am planning to use following stack to use
 
 docker-compose up -d --scale chrome=1 --scale firefox=2
 
-mvn clean package -DskipTests=ture
+mvn clean package -DskipTests
 
 docker-compose up -d 
 

@@ -7,11 +7,11 @@
         </classes>
     </test>
 <!--    to run test in parallel add more tests below-->
-<!--    <test name="Cucumber Tests-1">-->
-<!--        <classes>-->
-<!--            <class name="runners.SearchTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Cucumber Tests-1">
+        <classes>
+            <class name="runners.SearchTest"/>
+        </classes>
+    </test>
 <!--    <test name="Cucumber Tests-2">-->
 <!--        <classes>-->
 <!--            <class name="runners.SearchTest"/>-->
