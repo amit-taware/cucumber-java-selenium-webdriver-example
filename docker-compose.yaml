@@ -1,7 +1,7 @@
 version: "3"
 services:
   hub:
-    image: selenium/hub:latest
+    image: selenium/hub:3.141.59
     ports:
       - "4444:4444"
     environment:
@@ -9,13 +9,13 @@ services:
       - GRID_BROWSER_TIMEOUT=30000
 
   chrome:
-    image: selenium/node-chrome:latest
+    image: selenium/node-chrome:3.141.59
     depends_on:
       - hub
     environment:
       - HUB_HOST=hub
   firefox:
-    image: selenium/node-firefox:latest
+    image: selenium/node-firefox:3.141.59
     shm_size: '512m'
     depends_on:
       - hub

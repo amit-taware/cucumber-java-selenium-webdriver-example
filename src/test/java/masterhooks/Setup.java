@@ -2,7 +2,6 @@ package masterhooks;
 
 import cucumber.api.Scenario;
 import cucumber.api.java.Before;
-import io.restassured.RestAssured;
 import io.restassured.specification.RequestSpecification;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,21 +15,18 @@ import java.util.concurrent.TimeUnit;
 public class Setup {
 
     public static WebDriver driver;
-    public static RequestSpecification request;
-    public static String Token = "c1688fb57e5c49a62095180fe79b176aa90a70b8";
 
     @Before
     public void setWebDriver(Scenario scenario) throws Exception {
 
-        String host = "localhost";
+        String host = "hub";
 
         if (System.getProperty("HUB_HOST") != null) {
             host = System.getProperty("HUB_HOST");
         }
         String browser = System.getProperty("BROWSER");
-        DesiredCapabilities dc = new DesiredCapabilities();
+        DesiredCapabilities dc;
         String completeUrl = "http://" + host + ":4444/wd/hub";
-        dc.setCapability("Name",scenario.getName());
 
         if (browser == null) {
             browser = "local";
@@ -44,11 +40,11 @@ public class Setup {
                 driver = new ChromeDriver(chromeOptions);
                 break;
             case "firefox":
-                dc.setBrowserName("firefox");
+                dc = DesiredCapabilities.firefox();
                 driver = new RemoteWebDriver(new URL(completeUrl), dc);
                 break;
             case "chrome":
-                dc.setBrowserName("chrome");
+                dc = DesiredCapabilities.chrome();
                 driver = new RemoteWebDriver(new URL(completeUrl), dc);
                 break;
             default:
